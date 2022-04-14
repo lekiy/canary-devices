@@ -8,7 +8,7 @@ function DeviceButton({name, id, setActiveId}){
     }, [setActiveId, id])
 
     return (
-        <Button className="deviceButton" onClick={handleClick}>
+        <Button variant="text" onClick={handleClick}>
             <h3>
                 {name}
             </h3>
