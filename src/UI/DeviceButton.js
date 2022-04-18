@@ -7,10 +7,13 @@ function DeviceButton({name, id, setActiveId}){
         setActiveId(id);
     }, [setActiveId, id])
 
+    // Cleans the name of the device of onwanted charaters
+    const nameCleaned = name.replaceAll(/[-_+]/g, " ");
+
     return (
-        <Button variant="text" onClick={handleClick}>
+        <Button data-testid={"deviceButton"} variant="text" onClick={handleClick}>
             <h3>
-                {name}
+                {nameCleaned}
             </h3>
         </Button>
     )

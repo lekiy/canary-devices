@@ -8,7 +8,7 @@ function App() {
   const [activeId, setActiveId] = useState(2);
 
   return (
-    <div className="App">
+    <div data-testid={"app"} className="App">
       <DeviceList setActiveId={setActiveId}/>
       <DeviceViewer id={activeId}/>
     </div>

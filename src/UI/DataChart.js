@@ -1,5 +1,5 @@
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, linearGradient } from 'recharts';
-import {Box, Grid, Typography, Container } from "@mui/material";
+import {Box, Typography, Container } from "@mui/material";
 
 
 function DataChart({chartId, name, data, colorTop, colorBase}) {
@@ -14,7 +14,6 @@ function DataChart({chartId, name, data, colorTop, colorBase}) {
         tickArray.push(Math.ceil(maxValue*i));
     }
     
-    // console.log(`Max: ${maxValue} ${tickArray}`);
     return (
         <Container>
         <Typography variant="h5">{name}</Typography>
