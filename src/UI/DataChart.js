@@ -38,7 +38,7 @@ function DataChart({chartId, name, data, colorTop, colorBase}) {
                     </defs>
                     <XAxis dataKey="time"/>
                     <YAxis dataKey="dataPoint" ticks={tickArray}/>
-                    <Tooltip />
+                    <Tooltip formatter={(value) => [value, name]} />
                 </AreaChart>
             </ResponsiveContainer>
         </Container>
