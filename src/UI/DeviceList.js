@@ -1,13 +1,17 @@
 import React, {useState, useCallback} from 'react';
 import useAPIQuery from '../Util/Hooks/useAPIQuery';
 import DeviceButton from './DeviceButton';
+import AddIcon from '@mui/icons-material/Add';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Drawer, Divider, Toolbar, IconButton, Box, AppBar, Typography} from '@mui/material';
+import { Drawer, Divider, Toolbar, IconButton, AppBar, Typography, Button} from '@mui/material';
+import useAddDeviceModal from '../Util/Hooks/useAddDeviceModal';
 
 function DeviceList({setActiveId}){
 
     const [drawerOpen, setDrawerOpen] = useState(false);
     const drawerWidth = "240px";
+
+    const {openModal, modal} = useAddDeviceModal();
 
     const handleToggleDrawer = useCallback(() => {
         setDrawerOpen(!drawerOpen);
@@ -17,13 +21,19 @@ function DeviceList({setActiveId}){
     const deviceListButtons = deviceList.map(device => <DeviceButton key={device.id} name={device.name} id={device.id} setActiveId={setActiveId}></DeviceButton>);
 
     const drawerContent = (<>
-        <Typography variant="h3" align="center">Devices</Typography>
+        <Toolbar sx={{backgroundColor: "primary.main"}}>
+            <Typography variant="h3" align="center" m={"auto"}>Devices</Typography>
+        </Toolbar>
+        <Divider />
+        <Button onClick={openModal} color="secondary"
+        align="center"><AddIcon /></Button> 
+        {modal}
         <Divider />
         {deviceListButtons}
     </>);
     
     return (
-        <Box sx={{ display: 'flex' }}>
+        <>
             <AppBar
                 position="fixed"
                 sx={{
@@ -31,35 +41,26 @@ function DeviceList({setActiveId}){
                 ml: { sm: `${drawerWidth}px` },
                 }}
             >
-            <Toolbar>
-            <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleToggleDrawer}
-                sx={{ mr: 2, display: { sm: 'none' } }}
-            >
-                <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" noWrap component="div">
-                Responsive drawer
-            </Typography>
-            </Toolbar>
+                <Toolbar>
+                <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    edge="start"
+                    onClick={handleToggleDrawer}
+                    sx={{ mr: 2, display: { sm: 'none' } }}
+                >
+                    <MenuIcon />
+                </IconButton>
+                </Toolbar>
             </AppBar>
-            <Box
-                component="nav"
-                sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-                aria-label="mailbox folders"
-            >
-            </Box>
             <Toolbar />
-            <Drawer open={drawerOpen} onClose={handleToggleDrawer} variant="temporary" sx={{display: { xs: 'block', sm: 'none' }}} PaperProps={{sx: {width: drawerWidth}}}>
+            <Drawer open={drawerOpen} onClose={handleToggleDrawer} variant="temporary" sx={{display: { xs: 'block', sm: 'none' }, backgroundColor: "primary.secondary"}} PaperProps={{sx: {width: drawerWidth}}}>
                 {drawerContent}
             </Drawer> 
-            <Drawer open variant="permanent" sx={{display: { xs: 'none', sm: 'block' }}} PaperProps={{sx: {width: drawerWidth}}}>
+            <Drawer open variant="permanent" sx={{display: { xs: 'none', sm: 'block' }, backgroundColor: "primary.secondary"}} PaperProps={{sx: {width: drawerWidth}, backgroundColor: "primary.secondary"}}>
                 {drawerContent}
             </Drawer>
-        </Box>
+        </>
     )
 }
 

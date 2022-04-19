@@ -1,4 +1,4 @@
-import { Box, Typography, Grid } from "@mui/material";
+import { Box, Typography, Grid, Button } from "@mui/material";
 import React from "react";
 import useAPIQuery from "../Util/Hooks/useAPIQuery";
 import DataChart from "./DataChart";
@@ -32,7 +32,7 @@ function DeviceViewer({id}){
     if(id === undefined) return;
 
     return (
-    <Box data-testid={"deviceViewer"} m={"20px"} sx={{marginLeft: { xs: "20px", sm: "270px" }}} p={"10px"} backgroundColor="white">
+    <Box data-testid={"deviceViewer"} m={"20px"} sx={{marginLeft: { xs: "20px", sm: "270px" }, backgroundColor: "white"}} p={"10px"}>
         <Typography data-testid={"deviceViewerTitle"} variant="h2">{deviceData.name}</Typography>
         <Grid container>
             <Grid item xs={12} lg={4}>

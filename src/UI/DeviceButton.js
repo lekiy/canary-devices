@@ -11,7 +11,7 @@ function DeviceButton({name, id, setActiveId}){
     const nameCleaned = name.replaceAll(/[-_+]/g, " ");
 
     return (
-        <Button data-testid={"deviceButton"} variant="text" onClick={handleClick}>
+        <Button data-testid={"deviceButton"} onClick={handleClick} color="primary">
             <h3>
                 {nameCleaned}
             </h3>
