@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, Button } from "@mui/material";
+import { Box, Typography, Grid } from "@mui/material";
 import React from "react";
 import useAPIQuery from "../Util/Hooks/useAPIQuery";
 import DataChart from "./DataChart";
