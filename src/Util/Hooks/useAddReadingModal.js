@@ -30,6 +30,7 @@ function useAddReadingModal() {
     const handleSubmit = useCallback((event) => {
         event.preventDefault();
         handleClose();
+        console.log("close");
     }, [handleClose]);
 
     const modal = (type) => (

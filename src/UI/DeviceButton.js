@@ -1,5 +1,5 @@
 import React, {useCallback} from "react";
-import Button from "@mui/material/Button"
+import {Button, Typography} from "@mui/material/"
 
 function DeviceButton({name, id, setActiveId}){
 
@@ -12,9 +12,7 @@ function DeviceButton({name, id, setActiveId}){
 
     return (
         <Button data-testid={"deviceButton"} onClick={handleClick} color="primary">
-            <h3>
-                {nameCleaned}
-            </h3>
+            <Typography p="5px">{nameCleaned}</Typography>
         </Button>
     )
 }

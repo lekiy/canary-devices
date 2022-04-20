@@ -17,6 +17,8 @@ function useAPIQuery(endpoint) {
     return data;
 }
 
+
+// this would be functional code but the api doesn't support POST methods.
 export function useAPIPost(endpoint, data){
 
     const sendData = useCallback(async () => {

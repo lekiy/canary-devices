@@ -26,7 +26,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-    <div data-testid={"app"} className="App" backgroundColor={theme.backgroundColor}>
+    <div data-testid={"app"} className="App" backgroundColor={theme.background}>
         <DeviceList setActiveId={setActiveId}/>
         <DeviceViewer id={activeId}/>
     </div>

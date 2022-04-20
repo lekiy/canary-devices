@@ -8,13 +8,18 @@ function DataChart({chartId, name, data, colorTop, colorBase}) {
 
     const {openModal, modal} = useAddReadingModal();
 
+    //Just makes sure something is rendered even if data is not available.
     if(data === undefined){
         return <Box></Box>
     }
 
+    // this set of values and for-loop creates an array of values used by the chart
+    // to determine each tick on the chart taking the maximum value and subdividing it
+    // by each 5th
     const maxValue = Math.max(...data.map(reading => reading.dataPoint));
     const tickArray = [];
-    for(var i = 0; i <= 1; i+=0.2){
+
+    for(let i = 0; i <= 1; i+=0.2){
         tickArray.push(Math.ceil(maxValue*i));
     }
     
@@ -24,8 +29,8 @@ function DataChart({chartId, name, data, colorTop, colorBase}) {
                 <Typography variant="h5" flexGrow={1}>{name}</Typography>
                 <IconButton onClick={openModal} color="secondary">
                     <AddIcon />
-                    {modal(name)}
                 </IconButton>
+                {modal(name)}
             </Stack>
             <ResponsiveContainer minHeight={"200px"}>
                 <AreaChart data={data} width="100%" height="100%" >

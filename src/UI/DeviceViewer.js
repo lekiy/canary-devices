@@ -8,6 +8,8 @@ function DeviceViewer({id}){
     const deviceReadings = useAPIQuery(`/devices/${id}/readings`);
     const deviceData = useAPIQuery(`/devices/${id}`);   
     
+    // Each of these three functions are filtering out the data by each individual type
+    // to be passed into the DataChart components for render
     const temperatureData = deviceReadings.filter(reading => reading.type === "temperature").map(reading => {
         return {
             name: reading.created,
